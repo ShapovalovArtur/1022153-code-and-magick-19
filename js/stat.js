@@ -14,4 +14,8 @@ var renderCloud = function (ctx, x, y, color) {
 window.renderStatistics = function (ctx, names, times) {
   renderCloud(ctx, CLOUD_X + CLOUD_GAP, CLOUD_Y + CLOUD_GAP, 'rgba(0, 0, 0, 0.7)');
   renderCloud(ctx, CLOUD_X, CLOUD_Y, 'white');
+  ctx.fillStyle = 'black';
+  ctx.font = '60px PT Mono';
+  ctx.fillText('Привет', 0, 105);
 };
+
