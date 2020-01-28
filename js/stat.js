@@ -28,34 +28,33 @@ window.renderStatistics = function (ctx) {
   var playerIndex = 0;
   var playerName = 'Вы';
   var playerTime = 1725;
-  var barX = CLOUD_X + 50;
-  var barHeight = MAX_BAR_HEIGHT / (4025 / playerTime);
-  var barY = BAR_TEXT - BAR_TEXT_GAP - barHeight;
-  var barScore = BAR_TEXT - BAR_TEXT_GAP - MAX_BAR_HEIGHT / (4025 / playerTime) - BAR_TIME_GAP;
 
   ctx.fillStyle = 'black';
-  ctx.fillText(playerName, barX, BAR_TEXT);
-  ctx.fillText(playerTime, barX, barScore);
+  ctx.fillText(playerName, CLOUD_X + BAR_GAP + 0 * (BAR_GAP + BAR_WIDTH), BAR_TEXT);
+  ctx.fillText(playerTime, CLOUD_X + BAR_GAP, (BAR_TEXT - BAR_TEXT_GAP - MAX_BAR_HEIGHT / (4025 / playerTime)) - BAR_TIME_GAP);
   ctx.fillStyle = 'rgba(255, 0, 0, 1)';
-  ctx.fillRect(barX + 0 * (BAR_GAP + BAR_WIDTH), BAR_TEXT - BAR_TEXT_GAP - MAX_BAR_HEIGHT / (4025 / playerTime), BAR_WIDTH, MAX_BAR_HEIGHT / (4025 / playerTime));
+  ctx.fillRect(CLOUD_X + BAR_GAP + 0 * (BAR_GAP + BAR_WIDTH), BAR_TEXT - BAR_TEXT_GAP - MAX_BAR_HEIGHT / (4025 / playerTime), BAR_WIDTH, MAX_BAR_HEIGHT / (4025 / playerTime));
 
   ctx.fillStyle = 'black';
-  ctx.fillText(playerName, barX + BAR_GAP + BAR_WIDTH, BAR_TEXT);
-  ctx.fillText(playerTime, barX + BAR_GAP + BAR_WIDTH, barScore);
+  playerTime = 3050;
+  ctx.fillText(playerName, CLOUD_X + BAR_GAP + 1 * (BAR_GAP + BAR_WIDTH), BAR_TEXT);
+  ctx.fillText(playerTime, CLOUD_X + BAR_GAP + BAR_GAP + BAR_WIDTH, (BAR_TEXT - BAR_TEXT_GAP - MAX_BAR_HEIGHT / (4025 / playerTime)) - BAR_TIME_GAP);
   ctx.fillStyle = 'rgba(255, 0, 0, 1)';
-  ctx.fillRect(barX + 1 * (BAR_GAP + BAR_WIDTH), BAR_TEXT - BAR_TEXT_GAP - MAX_BAR_HEIGHT / (4025 / playerTime), BAR_WIDTH, MAX_BAR_HEIGHT / (4025 / playerTime));
+  ctx.fillRect(CLOUD_X + BAR_GAP + 1 * (BAR_GAP + BAR_WIDTH), BAR_TEXT - BAR_TEXT_GAP - MAX_BAR_HEIGHT / (4025 / playerTime), BAR_WIDTH, MAX_BAR_HEIGHT / (4025 / playerTime));
 
   ctx.fillStyle = 'black';
-  ctx.fillText(playerName, barX + 2 * (BAR_GAP + BAR_WIDTH), BAR_TEXT);
-  ctx.fillText(playerTime, barX + 2 * (BAR_GAP + BAR_WIDTH), barScore);
+  playerTime = 1500;
+  ctx.fillText(playerName, CLOUD_X + BAR_GAP + 2 * (BAR_GAP + BAR_WIDTH), BAR_TEXT);
+  ctx.fillText(playerTime, CLOUD_X + BAR_GAP + 2 * (BAR_GAP + BAR_WIDTH), (BAR_TEXT - BAR_TEXT_GAP - MAX_BAR_HEIGHT / (4025 / playerTime)) - BAR_TIME_GAP);
   ctx.fillStyle = 'rgba(255, 0, 0, 1)';
-  ctx.fillRect(barX + 2 * (BAR_GAP + BAR_WIDTH), BAR_TEXT - BAR_TEXT_GAP - MAX_BAR_HEIGHT / (4025 / playerTime), BAR_WIDTH, MAX_BAR_HEIGHT / (4025 / playerTime));
+  ctx.fillRect(CLOUD_X + BAR_GAP + 2 * (BAR_GAP + BAR_WIDTH), BAR_TEXT - BAR_TEXT_GAP - MAX_BAR_HEIGHT / (4025 / playerTime), BAR_WIDTH, MAX_BAR_HEIGHT / (4025 / playerTime));
 
   ctx.fillStyle = 'black';
-  ctx.fillText(playerName, barX + 3 * (BAR_GAP + BAR_WIDTH), BAR_TEXT);
-  ctx.fillText(playerTime, barX + 3 * (BAR_GAP + BAR_WIDTH), barScore);
+  playerTime = 800;
+  ctx.fillText(playerName, CLOUD_X + BAR_GAP + 3 * (BAR_GAP + BAR_WIDTH), BAR_TEXT);
+  ctx.fillText(playerTime, CLOUD_X + BAR_GAP + 3 * (BAR_GAP + BAR_WIDTH), (BAR_TEXT - BAR_TEXT_GAP - MAX_BAR_HEIGHT / (4025 / playerTime)) - BAR_TIME_GAP);
   ctx.fillStyle = 'rgba(255, 0, 0, 1)';
-  ctx.fillRect(barX + 3 * (BAR_GAP + BAR_WIDTH), BAR_TEXT - BAR_TEXT_GAP - MAX_BAR_HEIGHT / (4025 / playerTime), BAR_WIDTH, MAX_BAR_HEIGHT / (4025 / playerTime));
+  ctx.fillRect(CLOUD_X + BAR_GAP + 3 * (BAR_GAP + BAR_WIDTH), BAR_TEXT - BAR_TEXT_GAP - MAX_BAR_HEIGHT / (4025 / playerTime), BAR_WIDTH, MAX_BAR_HEIGHT / (4025 / playerTime));
 
 };
 
