@@ -8,7 +8,7 @@ var CLOUD_GAP = 10;
 var BAR_WIDTH = 40;
 var BAR_GAP = 50;
 var MAX_BAR_HEIGHT = 150;
-var BAR_TEXT = CLOUD_Y + 250;
+var BAR_TEXT = 260;
 var BAR_TEXT_GAP = 20;
 var BAR_TIME_GAP = 10;
 
@@ -34,8 +34,8 @@ window.renderStatistics = function (ctx, names, times) {
   renderCloud(ctx, CLOUD_X, CLOUD_Y, 'white');
   ctx.fillStyle = 'black';
   ctx.font = '16px PT Mono';
-  ctx.fillText('Ура вы победили!', CLOUD_X + 20, CLOUD_Y + 30);
-  ctx.fillText('Список результатов:', CLOUD_X + 20, CLOUD_Y + 50);
+  ctx.fillText('Ура вы победили!', CLOUD_X + BAR_TEXT_GAP, CLOUD_Y + (BAR_GAP - BAR_TEXT_GAP));
+  ctx.fillText('Список результатов:', CLOUD_X + BAR_TEXT_GAP, CLOUD_Y + BAR_GAP);
 
   var maxTime = getMaxElement(times);
   for (var i = 0; i < 4; i++) {
