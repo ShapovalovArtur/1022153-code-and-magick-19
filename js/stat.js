@@ -23,6 +23,9 @@ var getMaxElement = function (arr) {
   return maxElement;
 };
 
+var getRandomPercent = function () {
+  return Math.floor(Math.random() * 100);
+};
 
 var renderCloud = function (ctx, x, y, color) {
   ctx.fillStyle = color;
@@ -46,7 +49,7 @@ window.renderStatistics = function (ctx, names, times) {
     if (names[i] === 'Вы') {
       ctx.fillStyle = 'rgba(255, 0, 0, 1)';
     } else {
-      ctx.fillStyle = 'hsl(240, ' + Math.floor(Math.random() * Math.floor(101)) + '%, 50%)';
+      ctx.fillStyle = 'hsl(240, ' + getRandomPercent() + '%, 50%)';
     }
     ctx.fillRect(CLOUD_X + BAR_GAP + i * (BAR_GAP + BAR_WIDTH), BAR_TEXT - BAR_TEXT_GAP - MAX_BAR_HEIGHT / (maxTime / times[i]), BAR_WIDTH, MAX_BAR_HEIGHT / (maxTime / times[i]));
   }
