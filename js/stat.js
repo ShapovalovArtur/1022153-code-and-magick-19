@@ -28,9 +28,9 @@ var getRandomPercent = function () {
   return Math.floor(Math.random() * 100);
 };
 
-var renderRect = function (ctx, x, y, color) {
-  ctx.fillStyle = color;
-  ctx.fillRect(x, y, CLOUD_WIDTH, CLOUD_HEIGHT);
+var renderRect = function (ctx, names, i, maxTime, times) {
+  ctx.fillStyle = (names[i] === CURRENT_NAME) ? BAR_COLOR_CURRENT : 'hsl(240, ' + getRandomPercent() + '%, 50%)';
+  ctx.fillRect(CLOUD_X + BAR_GAP + i * (BAR_GAP + BAR_WIDTH), BAR_TEXT - BAR_TEXT_GAP - MAX_BAR_HEIGHT / (maxTime / times[i]), BAR_WIDTH, MAX_BAR_HEIGHT / (maxTime / times[i]));
 };
 
 var renderCloud = function (ctx) {
@@ -46,8 +46,7 @@ var renderBar = function (ctx, names, times) {
     ctx.fillStyle = 'black';
     ctx.fillText(names[i], CLOUD_X + BAR_GAP + i * (BAR_GAP + BAR_WIDTH), BAR_TEXT);
     ctx.fillText(Math.round(times[i]), CLOUD_X + BAR_GAP + i * (BAR_GAP + BAR_WIDTH), (BAR_TEXT - BAR_TEXT_GAP - MAX_BAR_HEIGHT / (maxTime / times[i])) - BAR_TIME_GAP);
-    ctx.fillStyle = (names[i] === CURRENT_NAME) ? BAR_COLOR_CURRENT : 'hsl(240, ' + getRandomPercent() + '%, 50%)';
-    ctx.fillRect(CLOUD_X + BAR_GAP + i * (BAR_GAP + BAR_WIDTH), BAR_TEXT - BAR_TEXT_GAP - MAX_BAR_HEIGHT / (maxTime / times[i]), BAR_WIDTH, MAX_BAR_HEIGHT / (maxTime / times[i]));
+    renderRect(ctx, names, i, maxTime, times);
   }
 };
 
