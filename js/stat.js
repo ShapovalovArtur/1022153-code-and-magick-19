@@ -12,6 +12,7 @@ var BAR_TEXT = 260;
 var BAR_TEXT_GAP = 20;
 var BAR_TIME_GAP = 10;
 var BAR_COLOR_CURRENT = 'rgba(255, 0, 0, 1)';
+var CURRENT_NAME = 'Вы';
 
 var getMaxElement = function (arr) {
   var maxElement = arr[0];
@@ -46,7 +47,7 @@ window.renderStatistics = function (ctx, names, times) {
     ctx.fillText(names[i], CLOUD_X + BAR_GAP + i * (BAR_GAP + BAR_WIDTH), BAR_TEXT);
     ctx.fillText(Math.round(times[i]), CLOUD_X + BAR_GAP + i * (BAR_GAP + BAR_WIDTH), (BAR_TEXT - BAR_TEXT_GAP - MAX_BAR_HEIGHT / (maxTime / times[i])) - BAR_TIME_GAP);
 
-    if (names[i] === 'Вы') {
+    if (names[i] === CURRENT_NAME) {
       ctx.fillStyle = BAR_COLOR_CURRENT;
     } else {
       ctx.fillStyle = 'hsl(240, ' + getRandomPercent() + '%, 50%)';
