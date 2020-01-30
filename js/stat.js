@@ -46,12 +46,7 @@ window.renderStatistics = function (ctx, names, times) {
     ctx.fillStyle = 'black';
     ctx.fillText(names[i], CLOUD_X + BAR_GAP + i * (BAR_GAP + BAR_WIDTH), BAR_TEXT);
     ctx.fillText(Math.round(times[i]), CLOUD_X + BAR_GAP + i * (BAR_GAP + BAR_WIDTH), (BAR_TEXT - BAR_TEXT_GAP - MAX_BAR_HEIGHT / (maxTime / times[i])) - BAR_TIME_GAP);
-
-    if (names[i] === CURRENT_NAME) {
-      ctx.fillStyle = BAR_COLOR_CURRENT;
-    } else {
-      ctx.fillStyle = 'hsl(240, ' + getRandomPercent() + '%, 50%)';
-    }
+    ctx.fillStyle = (names[i] === CURRENT_NAME) ? BAR_COLOR_CURRENT : 'hsl(240, ' + getRandomPercent() + '%, 50%)';
     ctx.fillRect(CLOUD_X + BAR_GAP + i * (BAR_GAP + BAR_WIDTH), BAR_TEXT - BAR_TEXT_GAP - MAX_BAR_HEIGHT / (maxTime / times[i]), BAR_WIDTH, MAX_BAR_HEIGHT / (maxTime / times[i]));
   }
 };
