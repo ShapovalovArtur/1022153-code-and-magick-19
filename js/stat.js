@@ -28,9 +28,16 @@ var getRandomPercent = function () {
   return Math.floor(Math.random() * 100);
 };
 
-var renderCloud = function (ctx, x, y, color) {
+var renderRect = function (ctx, x, y, color) {
   ctx.fillStyle = color;
   ctx.fillRect(x, y, CLOUD_WIDTH, CLOUD_HEIGHT);
+};
+
+var renderCloud = function (ctx) {
+  ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
+  ctx.fillRect(CLOUD_X + CLOUD_GAP, CLOUD_Y + CLOUD_GAP, CLOUD_WIDTH, CLOUD_HEIGHT);
+  ctx.fillStyle = 'white';
+  ctx.fillRect(CLOUD_X, CLOUD_Y, CLOUD_WIDTH, CLOUD_HEIGHT);
 };
 
 var renderBar = function (ctx, names, times) {
@@ -45,8 +52,7 @@ var renderBar = function (ctx, names, times) {
 };
 
 window.renderStatistics = function (ctx, names, times) {
-  renderCloud(ctx, CLOUD_X + CLOUD_GAP, CLOUD_Y + CLOUD_GAP, 'rgba(0, 0, 0, 0.7)');
-  renderCloud(ctx, CLOUD_X, CLOUD_Y, 'white');
+  renderCloud(ctx);
   ctx.fillStyle = 'black';
   ctx.font = '16px PT Mono';
   ctx.fillText('Ура вы победили!', CLOUD_X + BAR_TEXT_GAP, CLOUD_Y + (BAR_GAP - BAR_TEXT_GAP));
