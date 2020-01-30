@@ -13,6 +13,8 @@ var BAR_TEXT_GAP = 20;
 var BAR_TIME_GAP = 10;
 var BAR_COLOR_CURRENT = 'rgba(255, 0, 0, 1)';
 var CURRENT_NAME = 'Вы';
+var BAR_STEP = BAR_WIDTH + BAR_GAP;
+var BAR_LEFT_OFFSET = CLOUD_X + BAR_GAP;
 
 var getMaxElement = function (arr) {
   var maxElement = arr[0];
@@ -30,7 +32,7 @@ var getRandomPercent = function () {
 
 var renderRect = function (ctx, names, i, maxTime, times) {
   ctx.fillStyle = (names[i] === CURRENT_NAME) ? BAR_COLOR_CURRENT : 'hsl(240, ' + getRandomPercent() + '%, 50%)';
-  ctx.fillRect(CLOUD_X + BAR_GAP + i * (BAR_GAP + BAR_WIDTH), BAR_TEXT - BAR_TEXT_GAP - MAX_BAR_HEIGHT / (maxTime / times[i]), BAR_WIDTH, MAX_BAR_HEIGHT / (maxTime / times[i]));
+  ctx.fillRect(BAR_LEFT_OFFSET + i * BAR_STEP, BAR_TEXT - BAR_TEXT_GAP - MAX_BAR_HEIGHT / (maxTime / times[i]), BAR_WIDTH, MAX_BAR_HEIGHT / (maxTime / times[i]));
 };
 
 var renderCloud = function (ctx) {
@@ -44,8 +46,8 @@ var renderBar = function (ctx, names, times) {
   var maxTime = getMaxElement(times);
   for (var i = 0; i < times.length; i++) {
     ctx.fillStyle = 'black';
-    ctx.fillText(names[i], CLOUD_X + BAR_GAP + i * (BAR_GAP + BAR_WIDTH), BAR_TEXT);
-    ctx.fillText(Math.round(times[i]), CLOUD_X + BAR_GAP + i * (BAR_GAP + BAR_WIDTH), (BAR_TEXT - BAR_TEXT_GAP - MAX_BAR_HEIGHT / (maxTime / times[i])) - BAR_TIME_GAP);
+    ctx.fillText(names[i], BAR_LEFT_OFFSET + i * BAR_STEP, BAR_TEXT);
+    ctx.fillText(Math.round(times[i]), BAR_LEFT_OFFSET + i * BAR_STEP, (BAR_TEXT - BAR_TEXT_GAP - MAX_BAR_HEIGHT / (maxTime / times[i])) - BAR_TIME_GAP);
     renderRect(ctx, names, i, maxTime, times);
   }
 };
