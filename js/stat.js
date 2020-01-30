@@ -42,7 +42,8 @@ window.renderStatistics = function (ctx, names, times) {
   ctx.fillText('Список результатов:', CLOUD_X + BAR_TEXT_GAP, CLOUD_Y + BAR_GAP);
 
   var maxTime = getMaxElement(times);
-  for (var i = 0; i < 4; i++) {
+
+  for (var i = 0; i < times.length; i++) {
     ctx.fillStyle = 'black';
     ctx.fillText(names[i], CLOUD_X + BAR_GAP + i * (BAR_GAP + BAR_WIDTH), BAR_TEXT);
     ctx.fillText(Math.round(times[i]), CLOUD_X + BAR_GAP + i * (BAR_GAP + BAR_WIDTH), (BAR_TEXT - BAR_TEXT_GAP - MAX_BAR_HEIGHT / (maxTime / times[i])) - BAR_TIME_GAP);
