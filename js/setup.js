@@ -1,5 +1,7 @@
 'use strict';
 
+var WIZARD_QUANTITY = 4;
+
 var userDialog = document.querySelector('.setup');
 userDialog.classList.remove('hidden');
 
@@ -27,7 +29,7 @@ var getRandomName = function (firstname, surname) {
 };
 
 var createWizardList = function () {
-  for (var i = 0; i < wizardNames.length; i++) {
+  for (var i = 0; i < WIZARD_QUANTITY; i++) {
     wizards[i] = {
       name: wizardNames[i],
       coatColor: coatColors[getRandomIndex(coatColors)],
