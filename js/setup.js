@@ -19,18 +19,18 @@ var getRandomIndex = function (arr) {
 
 var getRandomName = function (firstname, surname) {
   for (var i = 0; i < firstNames.length; i++) {
-    wizardNames[i] = firstname[getRandomIndex(firstNames)] + ' ' + surname[getRandomIndex(firstNames)];
+    wizardNames.push(firstname[getRandomIndex(firstNames)] + ' ' + surname[getRandomIndex(firstNames)]);
   }
   return wizardNames;
 };
 
 var createWizardList = function () {
   for (var i = 0; i < WIZARD_QUANTITY; i++) {
-    wizards[i] = {
+    wizards.push({
       name: wizardNames[i],
       coatColor: coatColors[getRandomIndex(coatColors)],
       eyesColor: eyesColors[getRandomIndex(eyesColors)]
-    };
+    });
   }
 };
 
