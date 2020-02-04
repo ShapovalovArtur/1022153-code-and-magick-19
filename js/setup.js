@@ -1,7 +1,5 @@
 'use strict';
 
-var WIZARD_QUANTITY = 4;
-
 var userDialog = document.querySelector('.setup');
 userDialog.classList.remove('hidden');
 
@@ -47,6 +45,7 @@ var renderWizard = function (wizard) {
   return wizardElement;
 };
 
+var WIZARD_QUANTITY = 4;
 getRandomName(firstNames, surnames);
 createWizardList();
 
