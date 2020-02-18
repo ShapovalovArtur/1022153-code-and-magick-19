@@ -70,3 +70,15 @@ setupOpenButton.addEventListener('click', function () {
 setupCloseButton.addEventListener('click', function () {
   setup.classList.add('hidden');
 });
+
+setupCloseButton.addEventListener('keydown', function (evt) {
+  if (evt.key === 'Enter') {
+    setup.classList.add('hidden');
+  }
+});
+
+setupOpenButton.addEventListener('keydown', function (evt) {
+  if (evt.key === 'Enter') {
+    setup.classList.remove('hidden');
+  }
+});
