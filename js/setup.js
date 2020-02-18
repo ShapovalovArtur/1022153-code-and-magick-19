@@ -45,7 +45,7 @@ var renderWizard = function (wizard) {
 
 var WIZARD_QUANTITY = 4;
 
-userDialog.classList.remove('hidden');
+// userDialog.classList.remove('hidden');
 getRandomName(firstNames, surnames);
 createWizardList();
 
@@ -56,3 +56,17 @@ for (var i = 0; i < wizards.length; i++) {
 similarListElement.appendChild(fragment);
 
 userDialog.querySelector('.setup-similar').classList.remove('hidden');
+
+// открытие окна настройки персонажа
+
+var setup = document.querySelector('.setup');
+var setupOpenButton = document.querySelector('.setup-open');
+var setupCloseButton = setup.querySelector('.setup-close');
+
+setupOpenButton.addEventListener('click', function () {
+  setup.classList.remove('hidden');
+});
+
+setupCloseButton.addEventListener('click', function () {
+  setup.classList.add('hidden');
+});
