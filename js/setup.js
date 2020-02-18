@@ -62,23 +62,46 @@ userDialog.querySelector('.setup-similar').classList.remove('hidden');
 var setup = document.querySelector('.setup');
 var setupOpenButton = document.querySelector('.setup-open');
 var setupCloseButton = setup.querySelector('.setup-close');
+var setupTextInput = setup.querySelector('.setup-user-name');
+
+var setupEscKeyHandler = function (evt) {
+  if (evt.key === 'Escape') {
+    setup.classList.add('hidden');
+  }
+};
+var openSetupMenu = function () {
+  setup.classList.remove('hidden');
+  setupTextInput.addEventListener('focus', function () {
+    //document.removeEventListener('keydown', setupEscKeyHandler);
+    console.log('yyyy');
+    document.removeEventListener('keydown', setupEscKeyHandler);
+  });
+  document.addEventListener('keydown', setupEscKeyHandler);
+};
+
+var closeSetupMenu = function () {
+  setup.classList.add('hidden');
+  document.removeEventListener('keydown', setupEscKeyHandler);
+};
 
 setupOpenButton.addEventListener('click', function () {
-  setup.classList.remove('hidden');
+  openSetupMenu();
 });
 
 setupCloseButton.addEventListener('click', function () {
-  setup.classList.add('hidden');
+  closeSetupMenu();
 });
 
 setupCloseButton.addEventListener('keydown', function (evt) {
   if (evt.key === 'Enter') {
-    setup.classList.add('hidden');
+    closeSetupMenu();
   }
 });
 
 setupOpenButton.addEventListener('keydown', function (evt) {
   if (evt.key === 'Enter') {
-    setup.classList.remove('hidden');
+    openSetupMenu();
   }
 });
+
+
