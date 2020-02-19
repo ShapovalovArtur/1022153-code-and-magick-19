@@ -114,13 +114,39 @@ var COATS = [
   'rgb(56, 159, 117)',
   'rgb(215, 210, 55)',
   'rgb(0, 0, 0)'
-]
+];
 
-var switchCoat = function () {
-  return COATS[getRandomIndex(COATS)];
+var EYES = [
+  'black',
+  'red',
+  'blue',
+  'yellow',
+  'green'
+];
+
+var FIREBALLS = [
+  '#ee4830',
+  '#30a8ee',
+  '#5ce6c0',
+  '#e848d5',
+  '#e6e848'
+];
+
+var colorChangeHandler = function (arr) {
+  return arr[getRandomIndex(arr)];
 };
 
 var coat = document.querySelector('.wizard-coat');
 coat.addEventListener('click', function () {
-  coat.style.fill = switchCoat();
+  coat.style.fill = colorChangeHandler(COATS);
+});
+
+var eyes = document.querySelector('.wizard-eyes');
+eyes.addEventListener('click', function () {
+  eyes.style.fill = colorChangeHandler(EYES);
+});
+
+var fireball = document.querySelector('.setup-fireball-wrap');
+fireball.addEventListener('click', function () {
+  fireball.style.background = colorChangeHandler(FIREBALLS);
 });
