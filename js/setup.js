@@ -57,7 +57,7 @@ similarListElement.appendChild(fragment);
 
 userDialog.querySelector('.setup-similar').classList.remove('hidden');
 
-// открытие окна настройки персонажа
+// character setup window open-close
 
 var setup = document.querySelector('.setup');
 var setupOpenButton = document.querySelector('.setup-open');
@@ -106,7 +106,8 @@ setupOpenButton.addEventListener('keydown', function (evt) {
   }
 });
 
-// change color
+// customize character
+
 var COATS = [
   'rgb(101, 137, 164)',
   'rgb(241, 43, 107)',
@@ -132,21 +133,32 @@ var FIREBALLS = [
   '#e6e848'
 ];
 
+var coat = document.querySelector('.wizard-coat');
+var eyes = document.querySelector('.wizard-eyes');
+var fireball = document.querySelector('.setup-fireball-wrap');
+var inputCoat = document.querySelector('input[name = coat-color]');
+var inputEyes = document.querySelector('input[name = eyes-color]');
+var inputFireball = document.querySelector('input[name = fireball-color]');
+
 var colorChangeHandler = function (arr) {
   return arr[getRandomIndex(arr)];
 };
 
-var coat = document.querySelector('.wizard-coat');
+
 coat.addEventListener('click', function () {
   coat.style.fill = colorChangeHandler(COATS);
+  inputCoat.value = coat.style.fill;
 });
 
-var eyes = document.querySelector('.wizard-eyes');
+
 eyes.addEventListener('click', function () {
   eyes.style.fill = colorChangeHandler(EYES);
+  inputEyes.value = eyes.style.fill;
 });
 
-var fireball = document.querySelector('.setup-fireball-wrap');
+
 fireball.addEventListener('click', function () {
-  fireball.style.background = colorChangeHandler(FIREBALLS);
+  var currentColor = colorChangeHandler(FIREBALLS);
+  fireball.style.background = currentColor;
+  inputFireball.value = currentColor;
 });
