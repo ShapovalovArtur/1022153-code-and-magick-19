@@ -71,12 +71,14 @@ var setupEscKeyHandler = function (evt) {
 };
 var openSetupMenu = function () {
   setup.classList.remove('hidden');
+  document.addEventListener('keydown', setupEscKeyHandler);
   setupTextInput.addEventListener('focus', function () {
-    //document.removeEventListener('keydown', setupEscKeyHandler);
-    console.log('yyyy');
     document.removeEventListener('keydown', setupEscKeyHandler);
   });
-  document.addEventListener('keydown', setupEscKeyHandler);
+  setupTextInput.addEventListener('blur', function () {
+    document.addEventListener('keydown', setupEscKeyHandler);
+  });
+
 };
 
 var closeSetupMenu = function () {
