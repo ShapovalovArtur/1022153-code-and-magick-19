@@ -45,7 +45,6 @@ var renderWizard = function (wizard) {
 
 var WIZARD_QUANTITY = 4;
 
-// userDialog.classList.remove('hidden');
 getRandomName(firstNames, surnames);
 createWizardList();
 
@@ -56,8 +55,6 @@ for (var i = 0; i < wizards.length; i++) {
 similarListElement.appendChild(fragment);
 
 userDialog.querySelector('.setup-similar').classList.remove('hidden');
-
-// character setup window open-close
 
 var setup = document.querySelector('.setup');
 var setupOpenButton = document.querySelector('.setup-open');
@@ -106,7 +103,6 @@ setupOpenButton.addEventListener('keydown', function (evt) {
   }
 });
 
-// customize character
 
 var COATS = [
   'rgb(101, 137, 164)',
