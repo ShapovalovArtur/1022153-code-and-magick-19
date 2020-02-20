@@ -100,6 +100,11 @@ var popupEscHandler = function (evt) {
     setup.classList.add('hidden');
   }
 };
+
+var colorChangeHandler = function (arr) {
+  return arr[getRandomIndex(arr)];
+};
+
 var openPopup = function () {
   setup.classList.remove('hidden');
   document.addEventListener('keydown', popupEscHandler);
@@ -136,13 +141,6 @@ setupOpen.addEventListener('keydown', function (evt) {
     openPopup();
   }
 });
-
-
-
-var colorChangeHandler = function (arr) {
-  return arr[getRandomIndex(arr)];
-};
-
 
 coat.addEventListener('click', function () {
   coat.style.fill = colorChangeHandler(COATS);
