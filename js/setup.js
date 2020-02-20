@@ -96,6 +96,12 @@ var inputEyes = document.querySelector('input[name = eyes-color]');
 var inputFireball = document.querySelector('input[name = fireball-color]');
 
 var popupEscHandler = function (evt) {
+  userNameInput.addEventListener('focus', function () {
+    document.removeEventListener('keydown', popupEscHandler);
+  });
+  userNameInput.addEventListener('blur', function () {
+    document.addEventListener('keydown', popupEscHandler);
+  });
   if (evt.key === ESC_KEY) {
     setup.classList.add('hidden');
   }
@@ -108,13 +114,6 @@ var colorChangeHandler = function (arr) {
 var openPopup = function () {
   setup.classList.remove('hidden');
   document.addEventListener('keydown', popupEscHandler);
-  userNameInput.addEventListener('focus', function () {
-    document.removeEventListener('keydown', popupEscHandler);
-  });
-  userNameInput.addEventListener('blur', function () {
-    document.addEventListener('keydown', popupEscHandler);
-  });
-
 };
 
 var closePopup = function () {
