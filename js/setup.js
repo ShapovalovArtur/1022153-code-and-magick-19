@@ -121,6 +121,11 @@ var closePopup = function () {
   document.removeEventListener('keydown', popupEscHandler);
 };
 
+var changeColor = function (part, parts, partValue) {
+  part.style.fill = colorChangeHandler(parts);
+  partValue.value = part.style.fill;
+};
+
 setupOpen.addEventListener('click', openPopup);
 
 setupClose.addEventListener('click', closePopup);
@@ -138,14 +143,12 @@ setupOpen.addEventListener('keydown', function (evt) {
 });
 
 coat.addEventListener('click', function () {
-  coat.style.fill = colorChangeHandler(COATS);
-  inputCoat.value = coat.style.fill;
+  changeColor(coat, COATS, inputCoat);
 });
 
 
 eyes.addEventListener('click', function () {
-  eyes.style.fill = colorChangeHandler(EYES);
-  inputEyes.value = eyes.style.fill;
+  changeColor(eyes, EYES, inputEyes);
 });
 
 
@@ -154,3 +157,4 @@ fireball.addEventListener('click', function () {
   fireball.style.background = currentColor;
   inputFireball.value = currentColor;
 });
+
