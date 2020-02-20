@@ -91,9 +91,9 @@ var userNameInput = setup.querySelector('.setup-user-name');
 var coat = document.querySelector('.wizard-coat');
 var eyes = document.querySelector('.wizard-eyes');
 var fireball = document.querySelector('.setup-fireball-wrap');
-var inputCoat = document.querySelector('input[name = coat-color]');
-var inputEyes = document.querySelector('input[name = eyes-color]');
-var inputFireball = document.querySelector('input[name = fireball-color]');
+var coatColorInput = document.querySelector('input[name = coat-color]');
+var eyeColorInput = document.querySelector('input[name = eyes-color]');
+var fireballColorInput = document.querySelector('input[name = fireball-color]');
 
 var popupEscHandler = function (evt) {
   userNameInput.addEventListener('focus', function () {
@@ -143,18 +143,18 @@ setupOpen.addEventListener('keydown', function (evt) {
 });
 
 coat.addEventListener('click', function () {
-  changeColor(coat, COATS, inputCoat);
+  changeColor(coat, COATS, coatColorInput);
 });
 
 
 eyes.addEventListener('click', function () {
-  changeColor(eyes, EYES, inputEyes);
+  changeColor(eyes, EYES, eyeColorInput);
 });
 
 
 fireball.addEventListener('click', function () {
   var currentColor = colorChangeHandler(FIREBALLS);
   fireball.style.background = currentColor;
-  inputFireball.value = currentColor;
+  fireballColorInput.value = currentColor;
 });
 
