@@ -88,6 +88,12 @@ var setup = document.querySelector('.setup');
 var setupOpen = document.querySelector('.setup-open');
 var setupClose = setup.querySelector('.setup-close');
 var userNameInput = setup.querySelector('.setup-user-name');
+var coat = document.querySelector('.wizard-coat');
+var eyes = document.querySelector('.wizard-eyes');
+var fireball = document.querySelector('.setup-fireball-wrap');
+var inputCoat = document.querySelector('input[name = coat-color]');
+var inputEyes = document.querySelector('input[name = eyes-color]');
+var inputFireball = document.querySelector('input[name = fireball-color]');
 
 var popupEscHandler = function (evt) {
   if (evt.key === ESC_KEY) {
@@ -131,12 +137,7 @@ setupOpen.addEventListener('keydown', function (evt) {
   }
 });
 
-var coat = document.querySelector('.wizard-coat');
-var eyes = document.querySelector('.wizard-eyes');
-var fireball = document.querySelector('.setup-fireball-wrap');
-var inputCoat = document.querySelector('input[name = coat-color]');
-var inputEyes = document.querySelector('input[name = eyes-color]');
-var inputFireball = document.querySelector('input[name = fireball-color]');
+
 
 var colorChangeHandler = function (arr) {
   return arr[getRandomIndex(arr)];
