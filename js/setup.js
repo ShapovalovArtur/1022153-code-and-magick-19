@@ -1,4 +1,32 @@
 'use strict';
+var WIZARD_QUANTITY = 4;
+var COATS = [
+  'rgb(101, 137, 164)',
+  'rgb(241, 43, 107)',
+  'rgb(146, 100, 161)',
+  'rgb(56, 159, 117)',
+  'rgb(215, 210, 55)',
+  'rgb(0, 0, 0)'
+];
+
+var EYES = [
+  'black',
+  'red',
+  'blue',
+  'yellow',
+  'green'
+];
+
+var FIREBALLS = [
+  '#ee4830',
+  '#30a8ee',
+  '#5ce6c0',
+  '#e848d5',
+  '#e6e848'
+];
+
+var ESC_KEY = 'Escape';
+var ENTER_KEY = 'Enter';
 
 var firstNames = ['Иван', 'Хуан Себастьян', 'Мария', 'Кристоф', 'Виктор', 'Юлия', 'Люпита', 'Вашингтон'];
 var surnames = ['да Марья', 'Верон', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго', 'Ирвинг'];
@@ -43,8 +71,6 @@ var renderWizard = function (wizard) {
   return wizardElement;
 };
 
-var WIZARD_QUANTITY = 4;
-
 getRandomName(firstNames, surnames);
 createWizardList();
 
@@ -56,33 +82,6 @@ similarListElement.appendChild(fragment);
 
 userDialog.querySelector('.setup-similar').classList.remove('hidden');
 
-var COATS = [
-  'rgb(101, 137, 164)',
-  'rgb(241, 43, 107)',
-  'rgb(146, 100, 161)',
-  'rgb(56, 159, 117)',
-  'rgb(215, 210, 55)',
-  'rgb(0, 0, 0)'
-];
-
-var EYES = [
-  'black',
-  'red',
-  'blue',
-  'yellow',
-  'green'
-];
-
-var FIREBALLS = [
-  '#ee4830',
-  '#30a8ee',
-  '#5ce6c0',
-  '#e848d5',
-  '#e6e848'
-];
-
-var ESC_KEY = 'Escape';
-var ENTER_KEY = 'Enter';
 
 var setup = document.querySelector('.setup');
 var setupOpen = document.querySelector('.setup-open');
