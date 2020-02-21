@@ -125,6 +125,12 @@ var changeColor = function (part, parts, partValue) {
   partValue.value = part.style.fill;
 };
 
+var changeFireballColor = function () {
+  var currentColor = colorChangeHandler(FIREBALLS);
+  fireball.style.background = currentColor;
+  fireballColorInput.value = currentColor;
+};
+
 setupOpen.addEventListener('click', openPopup);
 
 setupClose.addEventListener('click', closePopup);
@@ -151,9 +157,5 @@ eyes.addEventListener('click', function () {
 });
 
 
-fireball.addEventListener('click', function () {
-  var currentColor = colorChangeHandler(FIREBALLS);
-  fireball.style.background = currentColor;
-  fireballColorInput.value = currentColor;
-});
+fireball.addEventListener('click', changeFireballColor);
 
