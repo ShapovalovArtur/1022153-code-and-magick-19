@@ -95,12 +95,9 @@ var eyeColorInput = document.querySelector('input[name = eyes-color]');
 var fireballColorInput = document.querySelector('input[name = fireball-color]');
 
 var popupEscHandler = function (evt) {
-  userNameInput.addEventListener('focus', function () {
-    document.removeEventListener('keydown', popupEscHandler);
-  });
-  userNameInput.addEventListener('blur', function () {
-    document.addEventListener('keydown', popupEscHandler);
-  });
+  if (userNameInput === document.activeElement) {
+    return;
+  }
   if (evt.key === ESC_KEY) {
     setup.classList.add('hidden');
   }
