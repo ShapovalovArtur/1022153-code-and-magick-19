@@ -4,12 +4,17 @@
 
   var setup = document.querySelector('.setup');
   var setupHandle = setup.querySelector('.upload');
+  var dragged = false;
+    var startCoords = {
+      x: null,
+      y: null
+    };
 
-  setupHandle.addEventListener('mousedown', function (evt) {
+  var mouseDownHandler = function (evt) {
     evt.preventDefault();
 
-    var dragged = false;
-    var startCoords = {
+    dragged = false;
+    startCoords = {
       x: evt.clientX,
       y: evt.clientY
     };
@@ -47,5 +52,8 @@
 
     document.addEventListener('mousemove', mouseMoveHandler);
     document.addEventListener('mouseup', mouseUpHandler);
-  });
+
+  };
+
+  setupHandle.addEventListener('mousedown', mouseDownHandler);
 })();
