@@ -16,22 +16,8 @@ var CURRENT_NAME = 'Вы';
 var BAR_STEP = BAR_WIDTH + BAR_GAP;
 var BAR_LEFT_OFFSET = CLOUD_X + BAR_GAP;
 
-var getMaxElement = function (arr) {
-  var maxElement = arr[0];
-  for (var i = 0; i <= arr.length; i++) {
-    if (arr[i] > maxElement) {
-      maxElement = arr[i];
-    }
-  }
-  return maxElement;
-};
-
-var getRandomPercent = function () {
-  return Math.floor(Math.random() * 100);
-};
-
 var renderRect = function (ctx, names, i, maxTime, times) {
-  ctx.fillStyle = (names[i] === CURRENT_NAME) ? BAR_COLOR_CURRENT : 'hsl(240, ' + getRandomPercent() + '%, 50%)';
+  ctx.fillStyle = (names[i] === CURRENT_NAME) ? BAR_COLOR_CURRENT : 'hsl(240, ' + window.util.getRandomPercent() + '%, 50%)';
   ctx.fillRect(BAR_LEFT_OFFSET + i * BAR_STEP, BAR_TEXT - BAR_TEXT_GAP - MAX_BAR_HEIGHT / (maxTime / times[i]), BAR_WIDTH, MAX_BAR_HEIGHT / (maxTime / times[i]));
 };
 
@@ -43,7 +29,7 @@ var renderCloud = function (ctx) {
 };
 
 var renderBar = function (ctx, names, times) {
-  var maxTime = getMaxElement(times);
+  var maxTime = window.util.getMaxElement(times);
   for (var i = 0; i < times.length; i++) {
     ctx.fillStyle = 'black';
     ctx.fillText(names[i], BAR_LEFT_OFFSET + i * BAR_STEP, BAR_TEXT);
