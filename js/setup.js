@@ -22,7 +22,7 @@
     var fragment = document.createDocumentFragment();
 
     for (var i = 0; i < WIZARD_QUANTITY; i++) {
-      fragment.appendChild(renderWizard(wizards[i]));
+      fragment.appendChild(renderWizard(wizards[window.util.getRandomIndex(wizards)]));
     }
     similarListElement.appendChild(fragment);
 
