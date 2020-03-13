@@ -45,7 +45,7 @@
 
   var form = userDialog.querySelector('.setup-wizard-form');
 
-  var successSaveHandler = function (response) {
+  var successSaveHandler = function () {
     userDialog.classList.add('hidden');
   };
 
