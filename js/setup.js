@@ -18,7 +18,7 @@
     return wizardElement;
   };
 
-  window.load(function (wizards) {
+  var successLoadHandler = function (wizards) {
     var fragment = document.createDocumentFragment();
 
     for (var i = 0; i < WIZARD_QUANTITY; i++) {
@@ -27,15 +27,30 @@
     similarListElement.appendChild(fragment);
 
     userDialog.querySelector('.setup-similar').classList.remove('hidden');
-  });
+  };
+
+  var errorHandler = function (errorMessage) {
+    var node = document.createElement('div');
+    node.style = 'z-index: 100; margin: 0 auto; text-align: center; background-color: red;';
+    node.style.position = 'absolute';
+    node.style.left = 0;
+    node.style.right = 0;
+    node.style.fontSize = '30px';
+
+    node.textContent = errorMessage;
+    document.body.insertAdjacentElement('afterbegin', node);
+  };
+
+  window.backend.load(successLoadHandler, errorHandler);
 
   var form = userDialog.querySelector('.setup-wizard-form');
 
-  form.addEventListener('submit', function (evt) {
-    window.save(new FormData(form), function (response) {
-      userDialog.classList.add('hidden');
-    });
-    evt.preventDefault();
-  });
+  var successSaveHandler = function (response) {
+    userDialog.classList.add('hidden');
+  };
 
+  form.addEventListener('submit', function (evt) {
+    evt.preventDefault();
+    window.backend.save(new FormData(form), successSaveHandler, errorHandler);
+  });
 })();
