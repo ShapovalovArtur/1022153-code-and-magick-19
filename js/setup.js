@@ -52,4 +52,14 @@
   similarListElement.appendChild(fragment);
 
   userDialog.querySelector('.setup-similar').classList.remove('hidden');
+
+  var form = userDialog.querySelector('.setup-wizard-form');
+
+  form.addEventListener('submit', function (evt) {
+    window.save(new FormData(form), function (response) {
+      userDialog.classList.add('hidden');
+    });
+    evt.preventDefault();
+  });
+
 })();
