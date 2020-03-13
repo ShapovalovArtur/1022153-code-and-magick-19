@@ -5,10 +5,10 @@
   var setup = document.querySelector('.setup');
   var setupHandle = setup.querySelector('.upload');
   var dragged = false;
-    var startCoords = {
-      x: null,
-      y: null
-    };
+  var startCoords = {
+    x: null,
+    y: null
+  };
 
   var mouseDownHandler = function (evt) {
     evt.preventDefault();
