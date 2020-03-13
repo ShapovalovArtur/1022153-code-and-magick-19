@@ -1,14 +1,21 @@
 'use strict';
 
 (function () {
+  var RESPONSE_TYPE = 'json';
+  var SUCCESS_STATUS = 200;
+  var SERVER_TIMEOUT = 10000;
+  var POST_URL = 'https://js.dump.academy/code-and-magick';
+  var GET_URL = 'https://js.dump.academy/code-and-magick/data';
+  var SAVE_METHOD = 'POST';
+  var LOAD_METHOD = 'GET';
 
   var save = function (data, successHandler, errorHandler) {
-    var URL = 'https://js.dump.academy/code-and-magick';
+    var URL = POST_URL;
     var xhr = new XMLHttpRequest();
-    xhr.responseType = 'json';
+    xhr.responseType = RESPONSE_TYPE;
 
     xhr.addEventListener('load', function () {
-      if (xhr.status === 200) {
+      if (xhr.status === SUCCESS_STATUS) {
         successHandler(xhr.response);
       } else {
         errorHandler('Статус ответа: ' + xhr.status + ' ' + xhr.statusText);
@@ -21,19 +28,19 @@
       errorHandler('Запрос не успел выполниться за ' + xhr.timeout + 'мс');
     });
 
-    xhr.timeout = 10000;
-    xhr.open('POST', URL);
+    xhr.timeout = SERVER_TIMEOUT;
+    xhr.open(SAVE_METHOD, URL);
     xhr.send(data);
 
   };
 
   var load = function (successHandler, errorHandler) {
-    var URL = 'https://js.dump.academy/code-and-magick/data';
+    var URL = GET_URL;
     var xhr = new XMLHttpRequest();
-    xhr.responseType = 'json';
+    xhr.responseType = RESPONSE_TYPE;
 
     xhr.addEventListener('load', function () {
-      if (xhr.status === 200) {
+      if (xhr.status === SUCCESS_STATUS) {
         successHandler(xhr.response);
       } else {
         errorHandler('Статус ответа: ' + xhr.status + ' ' + xhr.statusText);
@@ -46,8 +53,8 @@
       errorHandler('Запрос не успел выполниться за ' + xhr.timeout + 'мс');
     });
 
-    xhr.timeout = 10000;
-    xhr.open('GET', URL);
+    xhr.timeout = SERVER_TIMEOUT;
+    xhr.open(LOAD_METHOD, URL);
     xhr.send();
 
   };
