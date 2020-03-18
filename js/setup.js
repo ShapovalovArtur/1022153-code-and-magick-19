@@ -1,6 +1,7 @@
 'use strict';
 
 (function () {
+
   var COATS = [
     'rgb(101, 137, 164)',
     'rgb(241, 43, 107)',
@@ -26,6 +27,11 @@
     '#e6e848'
   ];
 
+  var wizardsCopy = [];
+  var newColor = '';
+  var sameCoatWizards = [];
+  var sameEyesWizards = [];
+
   var coat = document.querySelector('.wizard-coat');
   var eyes = document.querySelector('.wizard-eyes');
   var fireball = document.querySelector('.setup-fireball-wrap');
@@ -33,13 +39,28 @@
   var eyeColorInput = document.querySelector('input[name = eyes-color]');
   var fireballColorInput = document.querySelector('input[name = fireball-color]');
 
+
   var colorChangeHandler = function (arr) {
     return arr[window.util.getRandomIndex(arr)];
+  };
+
+  var updateWizards = function () {
+
+    sameCoatWizards = wizardsCopy.filter(function (it) {
+      return it.colorCoat === newColor;
+    });
+    sameEyesWizards = wizardsCopy.filter(function (it) {
+      return it.colorEyes === newColor;
+    });
+
+    console.log(sameCoatWizards);
+    console.log(sameEyesWizards);
   };
 
   var changeColor = function (part, parts, partValue) {
     part.style.fill = colorChangeHandler(parts);
     partValue.value = part.style.fill;
+    newColor = part.style.fill;
   };
 
   var changeFireballColor = function () {
@@ -50,11 +71,13 @@
 
   coat.addEventListener('click', function () {
     changeColor(coat, COATS, coatColorInput);
+    updateWizards();
   });
 
 
   eyes.addEventListener('click', function () {
     changeColor(eyes, EYES, eyeColorInput);
+    updateWizards();
   });
 
 
@@ -79,7 +102,7 @@
 
   var successLoadHandler = function (wizards) {
     var fragment = document.createDocumentFragment();
-
+    wizardsCopy = wizards;
     for (var i = 0; i < WIZARD_QUANTITY; i++) {
       fragment.appendChild(renderWizard(wizards[window.util.getRandomIndex(wizards)]));
     }
