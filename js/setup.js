@@ -28,9 +28,8 @@
   ];
 
   var wizardsCopy = [];
-  var newColor = '';
-  var sameCoatWizards = [];
-  var sameEyesWizards = [];
+  var newEyesColor = '';
+  var newCoatColor = '';
 
   var coat = document.querySelector('.wizard-coat');
   var eyes = document.querySelector('.wizard-eyes');
@@ -44,23 +43,39 @@
     return arr[window.util.getRandomIndex(arr)];
   };
 
+  var getRank = function (wizard) {
+    var rank = 0;
+    if (wizard.colorCoat === newCoatColor) {
+      rank += 2;
+    }
+    if (wizard.colorEyes === newEyesColor) {
+      rank += 1;
+    }
+    return rank;
+  };
+
   var updateWizards = function () {
 
-    sameCoatWizards = wizardsCopy.filter(function (it) {
-      return it.colorCoat === newColor;
-    });
-    sameEyesWizards = wizardsCopy.filter(function (it) {
-      return it.colorEyes === newColor;
+    wizardsCopy.forEach(function (wizard) {
+      wizard['rank'] = getRank(wizard);
     });
 
-    console.log(sameCoatWizards);
-    console.log(sameEyesWizards);
+    var sortedByRankWizards = wizardsCopy.sort(function (left, right) {
+      return right.rank - left.rank;
+    });
+
+    successLoadHandler(sortedByRankWizards);
   };
 
   var changeColor = function (part, parts, partValue) {
     part.style.fill = colorChangeHandler(parts);
     partValue.value = part.style.fill;
-    newColor = part.style.fill;
+    if (partValue.name === 'coat-color') {
+      newCoatColor = part.style.fill;
+    }
+    if (partValue.name === 'eyes-color') {
+      newEyesColor = part.style.fill;
+    }
   };
 
   var changeFireballColor = function () {
@@ -103,8 +118,9 @@
   var successLoadHandler = function (wizards) {
     var fragment = document.createDocumentFragment();
     wizardsCopy = wizards;
+    similarListElement.innerHTML = '';
     for (var i = 0; i < WIZARD_QUANTITY; i++) {
-      fragment.appendChild(renderWizard(wizards[window.util.getRandomIndex(wizards)]));
+      fragment.appendChild(renderWizard(wizards[i]));
     }
     similarListElement.appendChild(fragment);
 
