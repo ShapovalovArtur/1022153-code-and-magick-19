@@ -86,13 +86,13 @@
 
   coat.addEventListener('click', function () {
     changeColor(coat, COATS, coatColorInput);
-    updateWizards();
+    window.debounce(updateWizards());
   });
 
 
   eyes.addEventListener('click', function () {
     changeColor(eyes, EYES, eyeColorInput);
-    updateWizards();
+    window.debounce(updateWizards());
   });
 
 
