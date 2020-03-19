@@ -84,15 +84,27 @@
     fireballColorInput.value = currentColor;
   };
 
+  var lastTimeout;
   coat.addEventListener('click', function () {
     changeColor(coat, COATS, coatColorInput);
-    window.debounce(updateWizards());
-  });
 
+    if (lastTimeout) {
+      clearTimeout(lastTimeout);
+    }
+    lastTimeout = setTimeout(function () {
+      updateWizards();
+    }, 300);
+  });
 
   eyes.addEventListener('click', function () {
     changeColor(eyes, EYES, eyeColorInput);
-    window.debounce(updateWizards());
+
+    if (lastTimeout) {
+      clearTimeout(lastTimeout);
+    }
+    lastTimeout = setTimeout(function () {
+      updateWizards();
+    }, 300);
   });
 
 
