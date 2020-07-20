@@ -4,8 +4,8 @@
   var RESPONSE_TYPE = 'json';
   var SUCCESS_STATUS = 200;
   var SERVER_TIMEOUT = 10000;
-  var POST_URL = 'https://js.dump.academy/code-and-magick';
-  var GET_URL = 'https://js.dump.academy/code-and-magick/data';
+  var POST_URL = 'https://javascript.pages.academy/code-and-magick';
+  var GET_URL = 'https://javascript.pages.academy/code-and-magick/data';
   var SAVE_METHOD = 'POST';
   var LOAD_METHOD = 'GET';
 
